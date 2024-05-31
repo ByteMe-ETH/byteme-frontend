@@ -1,8 +1,10 @@
 import React from 'react';
 import Web3Connect from "@/hooks/Web3Connect";
+import { AuroraBackground } from '@/components/ui/aurora-beams';
 
 const Home: React.FC = () => {
   return (
+    <AuroraBackground>
     <main className="flex min-h-screen flex-col items-center justify-between p-72 relative">
       {/* Background image as a separate img tag */}
       <img src="/background.jpg" alt="Chess background" style={{
@@ -37,6 +39,7 @@ const Home: React.FC = () => {
         </div>
       </div>
     </main>
+    </AuroraBackground>
   );
 };
 
