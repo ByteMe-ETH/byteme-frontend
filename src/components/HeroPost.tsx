@@ -1,10 +1,11 @@
 import React from "react";
+import {Button} from "@/components/ui/button";
 
 const HeroPost = () => {
     return (
-        <p>
-            Some content
-        </p>
+        <Button onClick={() => console.log('')}>
+            Play
+        </Button>
     );
 }
 
