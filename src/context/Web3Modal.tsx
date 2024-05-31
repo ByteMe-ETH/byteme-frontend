@@ -44,6 +44,7 @@ createWeb3Modal({
     enableOnramp: true // Optional - false as default
 })
 
+// @ts-ignore
 export function Web3Modal({ children }) {
     return children
 }
