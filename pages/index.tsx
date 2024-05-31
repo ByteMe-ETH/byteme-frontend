@@ -1,6 +1,6 @@
 import {useAuth0} from "@auth0/auth0-react";
 import Container from "../components/container";
-import Image from "next/image";
+import ConnectButton from "../hooks/ConnectButton";
 
 function HomePage() {
     const {isAuthenticated, logout, loginWithPopup, user} = useAuth0();
@@ -18,6 +18,8 @@ function HomePage() {
                         >
                             Log Out
                         </button>
+                        <ConnectButton/>
+
                     </>
                 ) : (
                     <>
