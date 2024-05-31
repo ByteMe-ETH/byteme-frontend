@@ -1,3 +1,4 @@
+'use client'
 import {useWeb3Modal, useWeb3ModalAccount, useWalletInfo} from '@web3modal/ethers5/react'
 import { Button } from "@/components/ui/button";
 
