@@ -1,31 +1,43 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
-import Web3Connect from "@/hooks/Web3Connect";
-import { AuroraBackground } from "@/components/ui/aurora-beams";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import {motion, AnimatePresence} from 'framer-motion';
+import {AuroraBackground} from "@/components/ui/aurora-beams";
+import {useWeb3ModalAccount} from "@web3modal/ethers5/react";
+import HeroPre from "@/components/HeroPre";
+import HeroPost from "@/components/HeroPost";
 
 const Home: React.FC = () => {
+    const {isConnected} = useWeb3ModalAccount();
+
     return (
         <AuroraBackground>
-            <main className="flex flex-col items-center justify-between relative gap-4">
-                <TypewriterEffect
-                    words={[
-                        {
-                            text: "Chess3",
-                        },
-                    ]}
-                />
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeIn" }}
-                >
-                    <Web3Connect />
-                </motion.div>
-            </main>
+            <AnimatePresence>
+                {!isConnected && (
+                    <motion.div
+                        key="hero-pre"
+                        initial={{opacity: 0, y: 50}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: 50}}
+                        transition={{duration: 0.75}}
+                    >
+                        <HeroPre/>
+                    </motion.div>
+                )}
+                {isConnected && (
+                    <motion.div
+                        key="hero-post"
+                        initial={{opacity: 0, y: 50}}
+                        animate={{opacity: 1, y: 0}}
+                        exit={{opacity: 0, y: 50}}
+                        transition={{duration: 0.75}}
+                    >
+                        <HeroPost/>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </AuroraBackground>
     );
 };
 
 export default Home;
+
