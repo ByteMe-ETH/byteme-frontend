@@ -5,6 +5,7 @@ import {CircleUser} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useWeb3Modal, useWeb3ModalAccount} from "@web3modal/ethers5/react";
 import {motion, AnimatePresence} from 'framer-motion';
+import {useRouter} from "next/navigation";
 
 const Navbar = () => {
     const {address, isConnected} = useWeb3ModalAccount();
@@ -13,7 +14,7 @@ const Navbar = () => {
 
     const menuItems = ["Home", "Leaderboard", "Collection", "Wagers"];
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleMenu = () => setIsOpen(!isOpen)
 
     return (
         isConnected && (
