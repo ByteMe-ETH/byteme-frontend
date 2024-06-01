@@ -1,7 +1,8 @@
 import Web3 from 'web3';
+import ContractABI from '@/contracts/contractABI.json';
 
 // Replace with your contract ABI and address
-const contractABI = "";
+const contractABI = ContractABI;
 const contractAddress = '';
 
 class ChessContract {
@@ -13,42 +14,17 @@ class ChessContract {
         }
 
         this.contract = new this.web3.eth.Contract(contractABI, contractAddress);
+        console.log(this.contract);
+        console.log('Contract initialized');
+        console.log(this.contract.methods);
     }
 
-    async getGameAccounts() {
-        return await this.web3.eth.getAccounts() || [];
+    async createWager(amount, player1, player2) {
+        return await this.contract.methods.createWager(amount, player1, player2)
     }
 
-    async sendTransaction(method, ...args) {
-        const accounts = await this.getGameAccounts();
-        return await method(...args).send({ from: accounts[0] });
-    }
-
-    async createGame(player1, player2) {
-        return await this.sendTransaction(this.contract.methods.createGame, player1, player2);
-    }
-
-    async endGame(gameId, winner) {
-        await this.sendTransaction(this.contract.methods.endGame, gameId, winner);
-    }
-
-    async getOpenGames() {
-        return await this.contract.methods.getOpenGames().call();
-    }
-
-    async verifyMove(gameState, move) {
-        return await this.contract.methods.verifyMove(gameState, move).call();
-    }
-
-    // Helper function to create a wager
-    async createWager(gameId, amount) {
-        const tx = await this.sendTransaction(this.contract.methods.createWager, gameId, { value: amount });
-        return tx.events.WagerCreated.returnValues.wagerId;
-    }
-
-    // Helper function to accept a wager
-    async acceptWager(wagerId) {
-        await this.sendTransaction(this.contract.methods.acceptWager, wagerId);
+    async satisfyWager(gameId, winner) {
+        return await this.contract.methods.satisfyWager(gameId, winner);
     }
 }
 

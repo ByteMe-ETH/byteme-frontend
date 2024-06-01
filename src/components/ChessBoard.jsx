@@ -9,12 +9,14 @@ const ChessBoard = () => {
         const [chessContract, setChessContract] = useState(null);
         const [gameId, setGameId] = useState(null);
 
-        const [player1, player2] = chessContract.getGameAccounts();
-        const createdGameId = chessContract.createGame(player1, player2);
+        const player1 = '0x1234567890123456789012345678901234567890';
+        const player2 = '0xabcdefabcdefabcdefabcdefabcdefabcdefabcd';
 
         function checkEndGame() {
             if (game.isGameOver()) {
-                chessContract.endGame(gameId, game.turn() === 'w' ? player2 : player1);
+                chessContract.satisfyWager(gameId, game.turn() === 'w' ? player1 : player2).then(r =>
+                    alert('Game over! ' + (game.turn() === 'w' ? 'Black' : 'White') + ' wins!')
+                );
             }
         }
 
@@ -23,9 +25,7 @@ const ChessBoard = () => {
                 const contract = new ChessContract();
                 setChessContract(contract);
 
-                // Create a new game contract
-                const [player1, player2] = await contract.getGameAccounts();
-                const createdGameId = await contract.createGame(player1, player2);
+                const createdGameId = await contract.createWager(1, player1, player2);
                 setGameId(createdGameId);
             };
 
@@ -51,13 +51,7 @@ const ChessBoard = () => {
                     }}
                     onPieceDragEnd={function noRefCheck() {
                     }}
-                    onPieceDrop={
-                        function noRefCheck(sourceSquare, targetSquare) {
-                            const move = {from: sourceSquare, to: targetSquare};
-                            if (game.move(move) !== null) {
-                                checkEndGame();
-                            }
-                        }
+                    onPieceDrop={checkEndGame()
                     }
                     onPromotionCheck={function noRefCheck() {
                     }}
