@@ -1,10 +1,9 @@
 import React from "react";
+import {BentoGridHero} from "@/components/BentoGrid";
 
 const HeroPost = () => {
     return (
-        <p>
-            Some content
-        </p>
+        <BentoGridHero/>
     );
 }
 

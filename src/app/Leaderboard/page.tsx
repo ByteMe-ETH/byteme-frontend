@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react';
 import {TypewriterEffect} from "@/components/ui/typewriter-effect";
+import {AnimatePresence, motion} from "framer-motion";
 
 interface Player {
     name: string;
@@ -42,9 +43,15 @@ const Leaderboard: React.FC = () => {
                 words={[{text: "Leaderboard"}]}
                 className="mb-8"
             />
-            <div className="bg-black/50 p-8 rounded-3xl max-w-4xl w-full">
-                {displayLeaderboard()}
-            </div>
+            <AnimatePresence>
+                <motion.div className="bg-black/50 p-8 rounded-3xl max-w-4xl w-full"
+                            initial={{opacity: 0, y: 50}}
+                            animate={{opacity: 1, y: 0}}
+                            transition={{duration: 0.75}}
+                >
+                    {displayLeaderboard()}
+                </motion.div>
+            </AnimatePresence>
         </div>
     );
 };

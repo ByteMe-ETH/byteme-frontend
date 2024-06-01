@@ -53,9 +53,9 @@ const Navbar = () => {
                                     className="hover:bg-transparent flex items-center gap-x-2 px-4 py-2 rounded-lg"
                                     onClick={() => open()}
                             >
-                                <CircleUser className="hover:text-gray-300 transition-colors duration-200 ease-in-out transform hover:scale-110" size={24} />
+                                <CircleUser className="hover:text-gray-300 transition-colors duration-200 ease-in-out transform hover:scale-110" size={28} />
                             </Button>
-                            <p>{`${address.slice(0, 4)}...${address.slice(-4)}`}</p>
+                            <p className={"text-lg"}>{`${address.slice(0, 6)}...${address.slice(-6)}`}</p>
                         </motion.div>
                         <motion.nav
                             initial="hidden"
@@ -64,11 +64,11 @@ const Navbar = () => {
                             variants={containerVariants}
                             className="absolute right-12 top-1/2 transform -translate-y-1/2"
                         >
-                            <ul className="flex flex-col items-end gap-y-2">
+                            <ul className="flex flex-col items-end gap-y-2 text-xl">
                                 {menuItems.map((item, index) => (
                                     <motion.li key={index} variants={itemVariants}>
                                         <Link href={`/${item === "Home" ? "" : item}`}>
-                                            <p className="hover:text-gray-300 transition-colors duration-200 ease-in-out">
+                                            <p className="hover:text-gray-300 transition-colors duration-200 ease-in-out cursor-pointer">
                                                 {item}
                                             </p>
                                         </Link>
