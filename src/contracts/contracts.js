@@ -3,7 +3,7 @@ import ContractABI from '@/contracts/contractABI.json';
 
 // Replace with your contract ABI and address
 const contractABI = ContractABI;
-const contractAddress = '';
+let contractAddress = "0x4C1715bB3C0Ad36955EBaDa9A11312A03d1e0A61";
 
 class ChessContract {
     constructor() {
@@ -13,6 +13,7 @@ class ChessContract {
             console.log('You need an Ethereum wallet like MetaMask to interact with this site.');
         }
 
+        console.log(contractAddress);
         this.contract = new this.web3.eth.Contract(contractABI, contractAddress);
         console.log(this.contract);
         console.log('Contract initialized');
@@ -20,11 +21,15 @@ class ChessContract {
     }
 
     async createWager(amount, player1, player2) {
-        return await this.contract.methods.createWager(amount, player1, player2)
+        return await this.contract.methods.makeBet(amount, player1, player2).call(
+            {from: contractAddress}
+        ).then(r => console.log("Creating wager:", r));
     }
 
     async satisfyWager(gameId, winner) {
-        return await this.contract.methods.satisfyWager(gameId, winner);
+        return await this.contract.methods.payback(gameId, winner).send(
+            {from: contractAddress}
+        ).then(r => console.log(r));
     }
 }
 
