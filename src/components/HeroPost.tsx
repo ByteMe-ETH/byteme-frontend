@@ -3,7 +3,9 @@ import {BentoGridHero} from "@/components/BentoGrid";
 
 const HeroPost = () => {
     return (
-        <BentoGridHero/>
+        <main className="p-16">
+            <BentoGridHero/>
+        </main>
     );
 }
 

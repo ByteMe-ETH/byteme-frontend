@@ -3,7 +3,7 @@ import {HoverEffect} from "@/components/ui/card-hover-effect"
 
 export function NFTCollection() {
     return (
-        <div className="max-w-5xl mx-auto px-8">
+        <div className="max-w-5xl mx-auto p-16">
             <HoverEffect items={nfts}/>
         </div>
     );

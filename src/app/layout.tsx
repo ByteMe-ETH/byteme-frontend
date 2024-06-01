@@ -5,6 +5,7 @@ import {Web3Modal} from '@/context/Web3Modal'
 import Navbar from "@/components/NavBar";
 import {AuroraBackground} from "@/components/ui/aurora-beams";
 import {cn} from "@/utils/cn";
+import NavBarMobile from "@/components/NavBarMobile";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -27,6 +28,7 @@ export default function RootLayout({
                 "h-fit min-h-screen"
             )}>
                 <Navbar/>
+                <NavBarMobile/>
                 {children}
             </AuroraBackground>
         </Web3Modal>

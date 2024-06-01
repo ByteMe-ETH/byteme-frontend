@@ -38,7 +38,7 @@ const Navbar = () => {
     };
 
     return (
-        <header className="w-full h-full fixed top-0 right-0 z[-50]">
+        <header className="w-full h-full fixed top-0 right-0 z[-50] hidden md:block">
             <AnimatePresence>
                 {isConnected && address && (
                     <>
