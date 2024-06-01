@@ -32,19 +32,8 @@ const ChessBoard = () => {
 
             initChessContract();
         }, []);
-
-        const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-        useEffect(() => {
-            const handleResize = () => {
-                setWindowWidth(window.innerWidth);
-            };
-
-            window.addEventListener('resize', handleResize);
-            return () => {
-                window.removeEventListener('resize', handleResize);
-            };
-        }, []);
+        
+        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
         const boardStyle = {
             width: windowWidth >= 1024 ? '500px' : '375px',
