@@ -1,11 +1,11 @@
 import React from "react";
-import {Button} from "@/components/ui/button";
+import {BentoGridHero} from "@/components/BentoGrid";
 
 const HeroPost = () => {
     return (
-        <Button onClick={() => console.log('')}>
-            Play
-        </Button>
+        <main className="px-16 py-20">
+            <BentoGridHero/>
+        </main>
     );
 }
 

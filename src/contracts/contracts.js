@@ -1,8 +1,8 @@
 import Web3 from 'web3';
 
 // Replace with your contract ABI and address
-const contractABI = ""; // Get from Beyza
-const contractAddress = ''; // Get from Beyza
+const contractABI = "";
+const contractAddress = '';
 
 class ChessContract {
     constructor() {

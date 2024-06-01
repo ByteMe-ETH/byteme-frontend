@@ -3,6 +3,9 @@ import {Inter} from "next/font/google";
 import "./globals.css";
 import {Web3Modal} from '@/context/Web3Modal'
 import Navbar from "@/components/NavBar";
+import {AuroraBackground} from "@/components/ui/aurora-beams";
+import {cn} from "@/utils/cn";
+import NavBarMobile from "@/components/NavBarMobile";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -21,8 +24,13 @@ export default function RootLayout({
         <html lang="en">
         <body className={inter.className}>
         <Web3Modal>
-            <Navbar/>
-            {children}
+            <AuroraBackground className={cn(
+                "h-fit min-h-screen"
+            )}>
+                <Navbar/>
+                <NavBarMobile/>
+                {children}
+            </AuroraBackground>
         </Web3Modal>
         </body>
         </html>
