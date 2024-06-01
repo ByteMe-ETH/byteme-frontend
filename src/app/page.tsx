@@ -10,32 +10,30 @@ const Home: React.FC = () => {
     const {isConnected} = useWeb3ModalAccount();
 
     return (
-        <AuroraBackground>
-            <AnimatePresence>
-                {!isConnected && (
-                    <motion.div
-                        key="hero-pre"
-                        initial={{opacity: 0, y: 50}}
-                        animate={{opacity: 1, y: 0}}
-                        exit={{opacity: 0, y: 50}}
-                        transition={{duration: 0.75}}
-                    >
-                        <HeroPre/>
-                    </motion.div>
-                )}
-                {isConnected && (
-                    <motion.div
-                        key="hero-post"
-                        initial={{opacity: 0, y: 50}}
-                        animate={{opacity: 1, y: 0}}
-                        exit={{opacity: 0, y: 50}}
-                        transition={{duration: 0.75}}
-                    >
-                        <HeroPost/>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </AuroraBackground>
+        <AnimatePresence>
+            {!isConnected && (
+                <motion.div
+                    key="hero-pre"
+                    initial={{opacity: 0, y: 50}}
+                    animate={{opacity: 1, y: 0}}
+                    exit={{opacity: 0, y: 50}}
+                    transition={{duration: 0.75}}
+                >
+                    <HeroPre/>
+                </motion.div>
+            )}
+            {isConnected && (
+                <motion.div
+                    key="hero-post"
+                    initial={{opacity: 0, y: 50}}
+                    animate={{opacity: 1, y: 0}}
+                    exit={{opacity: 0, y: 50}}
+                    transition={{duration: 0.75}}
+                >
+                    <HeroPost/>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 
