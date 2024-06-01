@@ -33,7 +33,7 @@ const ChessBoard = () => {
             initChessContract();
         }, []);
 
-        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1023;
+        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
 
         const boardStyle = {
             width: windowWidth >= 1024 ? '500px' : '375px',
