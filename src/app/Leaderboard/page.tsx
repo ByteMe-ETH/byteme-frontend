@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import { AuroraBackground } from "@/components/ui/aurora-beams";  // Ensure this component is properly imported
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";  // Import TypewriterEffect
 
 interface Player {
     name: string;
@@ -19,13 +21,12 @@ const Leaderboard: React.FC = () => {
 
     // Function to sort players by score in descending order
     const sortPlayers = () => {
-        return [...players].sort((a, b) => b.score - a.score); // Create a new array to avoid mutating the original state
+        return [...players].sort((a, b) => b.score - a.score); // Copy to avoid mutation
     };
 
     // Function to display the leaderboard
     const displayLeaderboard = () => {
-        const sortedPlayers = sortPlayers();
-        return sortedPlayers.map((player, index) => (
+        return sortPlayers().map((player, index) => (
             <div key={index} style={styles.playerRow}>
                 <span style={styles.playerName}>{player.name}</span>
                 <span style={styles.playerScore}>{player.score}</span>
@@ -37,12 +38,21 @@ const Leaderboard: React.FC = () => {
     };
 
     return (
-        <div style={styles.container}>
-            <h1 style={styles.title}>Leaderboard</h1>
-            <div style={styles.board}>
-                {displayLeaderboard()}
+        <AuroraBackground>  {/* Wrapped the component content in AuroraBackground */}
+            <div style={styles.container}>
+                <TypewriterEffect
+                    words={[
+                        {
+                            text: "Leaderboard",
+                        },
+                    ]}
+                    style={styles.typewriter}  // Apply style for spacing
+                />
+                <div style={styles.board}>
+                    {displayLeaderboard()}
+                </div>
             </div>
-        </div>
+        </AuroraBackground>
     );
 };
 
@@ -53,15 +63,10 @@ const styles = {
         alignItems: 'center',
         justifyContent: 'flex-start',
         height: '100vh',
-        backgroundColor: 'rgba(0,0,0,0.1)',
         paddingTop: '19vh'
     },
-    title: {
-        fontWeight: 'bold',
-        fontSize: '48px',
-        color: 'black',
-        margin: '20px 0',
-        paddingBottom: '2vh'
+    typewriter: {
+        marginBottom: '2rem',  // Additional space below the typewriter effect
     },
     board: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -77,19 +82,18 @@ const styles = {
         color: 'white',
         padding: '10px',
         marginBottom: '40px',
-        width: '100%', // Ensures the row stretches to fit the container
+        width: '100%',
     },
     playerName: {
         textAlign: 'left',
-        flex: 1 // Ensures it takes up only the necessary space
+        flex: 1
     },
     playerScore: {
         textAlign: 'right',
         flex: 1
     },
     medal: {
-        // Styling for the medal span
-        fontSize: '24px', // Larger font size to highlight the medal
+        fontSize: '24px',
     }
 };
 
