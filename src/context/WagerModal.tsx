@@ -19,7 +19,7 @@ export default function WagerModal({isOpen, onClose}: WagerModalProps) {
         console.log("Wager Confirmed with opponent:", opponentAddress, "for", wagerAmount, "ETH in", gameType);
         onClose();
         // Further action or redirection could be placed here
-        router.push('/');  // Redirect to a specific confirmation page
+        router.push('/Board');  // Redirect to a specific confirmation page
     };
 
     const animationVariants = {
