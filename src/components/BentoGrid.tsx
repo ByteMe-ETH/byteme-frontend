@@ -2,12 +2,10 @@ import {cn} from "@/utils/cn";
 import React from "react";
 import {BentoGrid, BentoGridItem} from "@/components/ui/bento-grid";
 import {
-    IconClipboardCopy, IconCurrencyDollar,
-    IconFileBroken, IconShield,
-    IconSignature,
-    IconTableColumn, IconTrophy, IconUserPlus,
+    IconCurrencyDollar,
+    IconShield,
+    IconTrophy, IconUserPlus,
 } from "@tabler/icons-react";
-import Image from "next/image";
 
 export function BentoGridHero() {
     return (

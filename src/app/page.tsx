@@ -16,7 +16,6 @@ const Home: React.FC = () => {
                     key="hero-pre"
                     initial={{opacity: 0, y: 50}}
                     animate={{opacity: 1, y: 0}}
-                    exit={{opacity: 0, y: 50}}
                     transition={{duration: 0.75}}
                 >
                     <HeroPre/>
@@ -25,10 +24,9 @@ const Home: React.FC = () => {
             {isConnected && (
                 <motion.div
                     key="hero-post"
-                    initial={{opacity: 0, y: 50}}
-                    animate={{opacity: 1, y: 0}}
-                    exit={{opacity: 0, y: 50}}
-                    transition={{duration: 0.75}}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    transition={{duration: 1}}
                 >
                     <HeroPost/>
                 </motion.div>
